@@ -1,0 +1,61 @@
+<template name="messages">
+  <div class="row bootstrap snippets">
+    <div class="col-md-3">
+      <div class="box box-primary direct-chat direct-chat-primary">
+      
+        <!-- chat header -->
+        <div class="box-header with-border">
+          <h3 class="box-title">Chat between users</h3>
+          <div class="box-tools pull-right">
+            <span data-toggle="tooltip" title="" class="badge bg-light-blue" data-original-title="3 New Messages">{{messageCount}}</span>
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle">
+              <i class="fa fa-comments"></i></button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <!-- chat header -->
+
+        <!-- load messages -->
+        <div class="box-body col-md-3">
+          {{#each messages}}
+          <div class="direct-chat-messages">
+            {{#if isOwner this}}
+
+            <!-- show owner message in left -->
+            <div class="direct-chat-msg left">
+              <div class="direct-chat-info clearfix">
+                <span class="direct-chat-name pull-left">{{this.username}}</span>
+                <time class="direct-chat-timestamp pull-left">{{time this.time}}</time>
+              </div>
+              <img class="direct-chat-img" src="http://bootdey.com/img/Content/user_2.jpg" alt="Message User Image">
+              <div class="direct-chat-text">
+                {{this.message}}
+              </div>
+            </div>
+            <!-- show owner message in left -->
+
+            {{/if}} 
+            {{#unless isOwner this}}
+            <!-- show other user's message in right -->
+            <div class="direct-chat-msg right">
+              <div class="direct-chat-info clearfix">
+                <span class="direct-chat-name pull-right">{{this.username}}</span>
+                <time class="direct-chat-timestamp pull-left">{{time this.time}}</time>
+              </div>
+              <img class="direct-chat-img" src="http://bootdey.com/img/Content/user_1.jpg" alt="Message User Image">
+              <div class="direct-chat-text">
+                {{this.message}}
+              </div>
+            </div>
+            <!-- show other user's message in right -->
+            {{/unless}}
+          </div>
+          {{/each}}
+        </div>
+        <!-- load messages -->
+      </div>
+    </div>
+  </div>
+</template>

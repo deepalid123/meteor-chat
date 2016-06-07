@@ -1,0 +1,35 @@
+<template name="newMessage">
+  <div class="box-footer">
+    <form name="message">
+      <div class="input-group">
+        <input type="text" name="message" placeholder="Type Message ..." class="form-control" autocomplete="off">
+            <div class="info">
+            {{#if isMessageTooLong}}
+              <span class="danger count">{{count}}</span>
+            {{/if}}
+            {{#unless isMessageTooLong}}
+              <span class="count">{{count}}</span>
+            {{/unless}}
+            {{#if isValidMessage}}
+              <button type="submit" class="btn btn-info">Send</button>
+            {{/if}}
+            {{#unless isValidMessage}}
+              <button type="submit" class="btn btn-info" disabled>Send</button>
+            {{/unless}}
+        </div>
+      </div>
+    </form>
+  </div>
+</template>
+
+
+      <!-- <div class="box-footer">
+          <form action="#" method="post">
+            <div class="input-group">
+              <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                  <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary btn-flat">Send</button>
+                  </span>
+            </div>
+          </form>
+        </div> -->
